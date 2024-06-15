@@ -36,14 +36,15 @@ for i in range(100):
     plt.savefig(figure_file)
     oimages=oimages.to(device)
     print(labels)
-    m=get_blank_rgb(32,32)
+    m=np.zeros((32,32))
     for x in range(32):
         for y in range(32):
             images=1*oimages
             #
             images[:,1,max(x-d,0):min(x+d,32),max(y-d,0):min(y+d,32)]=0#np.random.choice([-1,0,1])
             outputs=net(images).detach().cpu().numpy()
-            m[x,y]=outputs[0,labels.item()]
+            #m[x,y]=outputs[0,labels.item()]
+            m[max(x-d,0):min(x+d,32),max(y-d,0):min(y+d,32)]+=outputs[0,labels.item()]
     m=np.abs(m-m.flatten().mean())
     spause()
     sh(z55(m),2,r=1)
