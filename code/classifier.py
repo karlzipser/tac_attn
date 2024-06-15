@@ -40,7 +40,7 @@ for i in range(100):
         for y in range(32):
             images=1*oimages
             #print(images.size(),images.max())
-            images[:,1,x-2:x+2,y-2:y+2]=2
+            images[:,1,x-2:x+2,y-2:y+2]=0
             outputs=net(images).detach().cpu().numpy()
             #print(outputs.size())
             m[x,y]=outputs[0,labels.item()]
