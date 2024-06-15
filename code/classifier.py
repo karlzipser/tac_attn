@@ -31,6 +31,7 @@ d=3
 dataiter = iter(testloader)
 for i in range(100):
     oimages, labels = next(dataiter)
+    print(oimages.size(),oimages.max(),oimages.min())
     sh(torchvision.utils.make_grid(oimages),1)
     plt.savefig(figure_file)
     oimages=oimages.to(device)
@@ -39,8 +40,8 @@ for i in range(100):
     for x in range(32):
         for y in range(32):
             images=1*oimages
-            #print(images.size(),images.max())
-            images[:,1,x-d:x+d,y-d:y+d]=np.random.choice([-1,0,1])
+            #
+            images[:,1,x-d:x+d,y-d:y+d]=0#np.random.choice([-1,0,1])
             outputs=net(images).detach().cpu().numpy()
             #print(outputs.size())
             m[x,y]=outputs[0,labels.item()]
