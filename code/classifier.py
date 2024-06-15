@@ -40,7 +40,10 @@ for x in range(32):
         images[:,:,x,y]=0
         outputs=net(images).detach().cpu().numpy()
         #print(outputs.size())
-        m[x,y]=outputs[0,:].sum(axis=1)
+        m[x,y]=outputs[0,:].sum()
+spause()
+sh(z55(m),r=1)
+
 
 print('*** Done')
 
