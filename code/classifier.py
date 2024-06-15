@@ -27,7 +27,7 @@ net=get_net(
     run_path='project_tac/15Jun24_10h16m58s-jake0',
 )
 
-d=3
+d=5
 dataiter = iter(testloader)
 for i in range(100):
     oimages, labels = next(dataiter)
