@@ -41,7 +41,7 @@ for i in range(100):
         for y in range(32):
             images=1*oimages
             #
-            images[:,1,max(x-d,0):min(x+d,32),max(y-d,0):min(y+d,32)]=randn(2*d,2*d,3)#0#np.random.choice([-1,0,1])
+            images[:,1,max(x-d,0):min(x+d,32),max(y-d,0):min(y+d,32)]=torch.randn(2*d,2*d,3).float().to(device)#0#np.random.choice([-1,0,1])
             outputs=net(images).detach().cpu().numpy()
             m[x,y]=outputs[0,labels.item()]
             #m[max(x-d,0):min(x+d,32),max(y-d,0):min(y+d,32),:]+=outputs[0,labels.item()]
