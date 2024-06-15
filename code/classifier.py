@@ -27,7 +27,7 @@ net=get_net(
     run_path='project_tac/15Jun24_10h16m58s-jake0',
 )
 
-
+d=3
 dataiter = iter(testloader)
 for i in range(100):
     oimages, labels = next(dataiter)
@@ -40,7 +40,7 @@ for i in range(100):
         for y in range(32):
             images=1*oimages
             #print(images.size(),images.max())
-            images[:,1,x-2:x+2,y-2:y+2]=0
+            images[:,1,x-d:x+d,y-d:y+d]=0
             outputs=net(images).detach().cpu().numpy()
             #print(outputs.size())
             m[x,y]=outputs[0,labels.item()]
