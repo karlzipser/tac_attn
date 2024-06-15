@@ -32,7 +32,7 @@ dataiter = iter(testloader)
 images, labels = next(dataiter)
 sh(torchvision.utils.make_grid(images),'grid')
 plt.savefig(figure_file)
-
+images=images.to(device)
 m=get_blank_rgb(32,32)
 for x in range(32):
     for y in range(32):
