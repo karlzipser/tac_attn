@@ -29,7 +29,7 @@ net=get_net(
 
 d=2
 
-dataiter = iter(testloader)
+dataiter = iter(trainloader)
 for i in range(100):
     ms=[]
     oimages, labels = next(dataiter)
