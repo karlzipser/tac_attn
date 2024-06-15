@@ -38,8 +38,8 @@ for i in range(100):
     for x in range(32):
         for y in range(32):
             images=1*images
-            print(images.size())
-            images[:,:,x-1:x+1,y-1:y+2]=2
+            print(images.size(),iamges.max())
+            images[:,1,x-2:x+2,y-2:y+2]=2
             outputs=net(images).detach().cpu().numpy()
             #print(outputs.size())
             m[x,y]=outputs[0,0]#.sum()
