@@ -27,6 +27,7 @@ net=get_net(
     run_path='project_tac/15Jun24_10h16m58s-jake0',
 )
 
+
 dataiter = iter(testloader)
 images, labels = next(dataiter)
 sh(torchvision.utils.make_grid(images),'grid')
