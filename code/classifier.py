@@ -53,7 +53,6 @@ for i in range(100):
     sh(cv2.rotate(z55(m),0),100,r=0)
     sh(cv2.rotate(z55(m),1),101,r=0)
     sh(cv2.rotate(z55(m),2),102,r=0)
-    sh(cv2.rotate(z55(m),3),103,r=0)
     cm()
 
 print('*** Done')
