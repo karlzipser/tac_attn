@@ -41,7 +41,7 @@ for i in range(100):
         for y in range(32):
             images=1*oimages
             #
-            images[:,1,x-d:x+d,y-d:y+d]=0#np.random.choice([-1,0,1])
+            images[:,1,max(x-d,0):min(x+d,32),max(y-d,0):min(y+d,32)]=0#np.random.choice([-1,0,1])
             outputs=net(images).detach().cpu().numpy()
             #print(outputs.size())
             m[x,y]=outputs[0,labels.item()]
