@@ -30,19 +30,19 @@ net=get_net(
 
 dataiter = iter(testloader)
 for i in range(100):
-    images, labels = next(dataiter)
+    oimages, labels = next(dataiter)
     sh(torchvision.utils.make_grid(images),1)
     plt.savefig(figure_file)
-    images=images.to(device)
+    oimages=oimages.to(device)
     m=get_blank_rgb(32,32)
     for x in range(32):
         for y in range(32):
-            images=1*images
-            print(images.size(),images.max())
+            images=1*oimages
+            #print(images.size(),images.max())
             images[:,1,x-2:x+2,y-2:y+2]=2
             outputs=net(images).detach().cpu().numpy()
             #print(outputs.size())
-            m[x,y]=outputs[0,0]#.sum()
+            m[x,y]=outputs[0,:].sum()
     spause()
     sh(z55(m),2,r=1)
 
