@@ -43,8 +43,8 @@ for i in range(100):
             #
             images[:,1,max(x-d,0):min(x+d,32),max(y-d,0):min(y+d,32)]=0#np.random.choice([-1,0,1])
             outputs=net(images).detach().cpu().numpy()
-            #print(outputs.size())
             m[x,y]=outputs[0,labels.item()]
+    m=np.abs(m-m.flatten().mean())
     spause()
     sh(z55(m),2,r=1)
 
