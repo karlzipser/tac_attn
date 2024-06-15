@@ -31,7 +31,7 @@ net=get_net(
 dataiter = iter(testloader)
 for i in range(100):
     oimages, labels = next(dataiter)
-    sh(torchvision.utils.make_grid(images),1)
+    sh(torchvision.utils.make_grid(oimages),1)
     plt.savefig(figure_file)
     oimages=oimages.to(device)
     m=get_blank_rgb(32,32)
