@@ -45,7 +45,7 @@ for i in range(100):
                     #
                     images[:,1,max(x-d,0):min(x+d,32),max(y-d,0):min(y+d,32)]=q#torch.randn(3,2*d,2*d).float().to(device)#0#np.random.choice([-1,0,1])
                     outputs=net(images).detach().cpu().numpy()
-                    m[y,32-x]+=outputs[0,labels.item()]
+                    m[y,31-x]+=outputs[0,labels.item()]
                 #m[max(x-d,0):min(x+d,32),max(y-d,0):min(y+d,32),:]+=outputs[0,labels.item()]
     m=np.abs(m-m.flatten().mean())
     spause()
