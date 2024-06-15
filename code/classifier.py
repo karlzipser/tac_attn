@@ -28,17 +28,19 @@ net=get_net(
 )
 
 d=2
+
 dataiter = iter(testloader)
 for i in range(100):
+    ms=[]
     oimages, labels = next(dataiter)
     print(oimages.size(),oimages.max(),oimages.min())
     sh(torchvision.utils.make_grid(oimages),1)
     plt.savefig(figure_file)
     oimages=oimages.to(device)
     print(labels)
-    m=np.zeros((32,32,3))
     for d in [1,2,3,4,5]:
         for q in [-1,0,1]:
+            m=np.zeros((32,32))
             for x in range(32):
                 for y in range(32):
                     images=1*oimages
@@ -47,12 +49,10 @@ for i in range(100):
                     outputs=net(images).detach().cpu().numpy()
                     m[x,y]+=outputs[0,labels.item()]
                 #m[max(x-d,0):min(x+d,32),max(y-d,0):min(y+d,32),:]+=outputs[0,labels.item()]
-    m=np.abs(m-m.flatten().mean())
-    spause()
-    sh(z55(m),2,r=0)
-    sh(cv2.rotate(z55(m),0),100,r=0)
-    sh(cv2.rotate(z55(m),1),101,r=0)
-    sh(cv2.rotate(z55(m),2),102,r=0)
+            m=np.abs(m-m.flatten().mean())
+            ms.append(m)
+    m=na(ms).sum(axis=0)
+    sh(m,2,r=0)
     cm()
 
 print('*** Done')
