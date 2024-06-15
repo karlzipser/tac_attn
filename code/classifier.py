@@ -33,10 +33,14 @@ images, labels = next(dataiter)
 sh(torchvision.utils.make_grid(images),'grid')
 plt.savefig(figure_file)
 
-
-stats=get_accuracy(net,testloader,classes,device)
-print(stats)
-t2f(stats_file,stats)
+m=get_blank_rgb(32,32)
+for x in range(32):
+    for y in range(32):
+        images=1*images
+        images[:,:,x,y]=0
+        outputs=net(images)
+        print(outputs.size())
+        m[x,y]=outputs[0,0,0]
 
 print('*** Done')
 
