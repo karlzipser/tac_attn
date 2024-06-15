@@ -49,8 +49,12 @@ for i in range(100):
                 #m[max(x-d,0):min(x+d,32),max(y-d,0):min(y+d,32),:]+=outputs[0,labels.item()]
     m=np.abs(m-m.flatten().mean())
     spause()
-    sh(z55(m),2,r=1)
-
+    sh(z55(m),2,r=0)
+    sh(cv2.rotate(z55(m),0),100,r=0)
+    sh(cv2.rotate(z55(m),1),101,r=0)
+    sh(cv2.rotate(z55(m),2),102,r=0)
+    sh(cv2.rotate(z55(m),3),103,r=0)
+    cm()
 
 print('*** Done')
 
