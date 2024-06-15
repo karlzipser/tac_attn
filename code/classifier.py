@@ -43,7 +43,7 @@ for i in range(100):
             images[:,1,x-d:x+d,y-d:y+d]=np.random.choice([-1,0,1])
             outputs=net(images).detach().cpu().numpy()
             #print(outputs.size())
-            m[x,y]=outputs[0,labels.item()]
+            m[x,y]=np,abs(outputs[0,labels.item()])
     spause()
     sh(z55(m),2,r=1)
 
