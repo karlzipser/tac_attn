@@ -34,6 +34,7 @@ for i in range(100):
     sh(torchvision.utils.make_grid(oimages),1)
     plt.savefig(figure_file)
     oimages=oimages.to(device)
+    print(labels)
     m=get_blank_rgb(32,32)
     for x in range(32):
         for y in range(32):
