@@ -24,7 +24,7 @@ device = torch.device(device if torch.cuda.is_available() else 'cpu')
 
 net=get_net(
     device=device,
-    run_path='project_tac/15Jun24_10h16m58s-jake0',
+    run_path='project_tac/15Jun24_13h42m54s-jake_long_train',
 )
 
 d=2
@@ -53,6 +53,10 @@ for i in range(100):
             ms.append(m)
     m=na(ms).sum(axis=0)
     sh(m,2,r=0)
+    m3=zeros((32,32,3))
+    for i in range(3):
+        m3[:,:,i]=z2o(m)
+
     cm()
 
 print('*** Done')
