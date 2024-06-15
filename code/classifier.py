@@ -38,7 +38,7 @@ for x in range(32):
     for y in range(32):
         images=1*images
         images[:,:,x,y]=0
-        outputs=net(images)
+        outputs=net(images).cpu().numpy()
         print(outputs.size())
         m[x,y]=outputs[0,0,0]
 
