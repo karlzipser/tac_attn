@@ -1,4 +1,6 @@
 ## 79 ########################################################################
+# python projutils/project.py --src tac_attn --termout 0
+# python projutils/view.py --src project_tac_attn
 
 print(__file__)
 assert 'project_' in __file__
