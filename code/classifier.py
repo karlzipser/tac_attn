@@ -24,7 +24,7 @@ device = torch.device(device if torch.cuda.is_available() else 'cpu')
 
 net=get_net(
     device=device,
-    run_path='project_tac/17Jun24_22h35m42s-net_net',
+    run_path='project_tac/18Jun24_14h09m36s',
 )
 
 d=2
