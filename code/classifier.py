@@ -24,7 +24,7 @@ device = torch.device(device if torch.cuda.is_available() else 'cpu')
 
 net=get_net(
     device=device,
-    run_path='project_tac/18Jun24_14h09m36s',
+    run_path='project_tac/18Jun24_14h09m36s_long_train',
 )
 
 d=2
@@ -35,17 +35,17 @@ for i in range(100):
     oimages, labels = next(dataiter)
     print(oimages.size(),oimages.max(),oimages.min())
     sh(torchvision.utils.make_grid(oimages),1)
-    plt.savefig(figure_file)
+    #plt.savefig(figure_file)
     oimages=oimages.to(device)
     print(labels)
-    for d in [1,2,3,4,5]:
-        for q in [-1,0,1]:
+    for d in [4]:#[1,2,3,4,5]:
+        for q in [0]:#[-1,0,1]:
             m=np.zeros((32,32))
             for x in range(32):
                 for y in range(32):
                     images=1*oimages
                     #
-                    images[:,1,max(x-d,0):min(x+d,32),max(y-d,0):min(y+d,32)]=q#torch.randn(3,2*d,2*d).float().to(device)#0#np.random.choice([-1,0,1])
+                    images[:,1,max(x-d,0):min(x+d,32),max(y-d,0):min(y+d,32)]=q
                     outputs=net(images).detach().cpu().numpy()
                     m[x,y]+=outputs[0,labels.item()]
                 #m[max(x-d,0):min(x+d,32),max(y-d,0):min(y+d,32),:]+=outputs[0,labels.item()]
