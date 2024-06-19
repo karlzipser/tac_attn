@@ -17,8 +17,8 @@ if 'project_' in __file__:
 from projutils import *
 from ..params.a import *
 from .dataloader import *
-from .stats import *
-from ..net.code.net import *
+#from .stats import *
+#from ..net.code.net import *
 
 device = torch.device(device if torch.cuda.is_available() else 'cpu')
 
